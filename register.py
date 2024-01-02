@@ -9,6 +9,7 @@ import requests
 from requests.auth import HTTPDigestAuth
 import qrcode
 import sys, subprocess, os, platform
+import base64
 
 if(len(sys.argv) < 2):
     print(sys.argv[0] + " x.x.x.x")
@@ -52,7 +53,9 @@ try:
         else:
             print("Registration failed.")
 
-        img = qrcode.make('https://quadjr.github.io/regza_control/index.html?ip=' + ip + '&id=' + user_id + "&pass=" + decrypted_password)
+        url = 'https://quadjr.github.io/regza_control/index.html?ip=' + ip + '&id=' + user_id + "&pass=" + base64.b64encode(decrypted_password.encode()).decode()
+        print(url)
+        img = qrcode.make(url)
         img.save(filepath)
         if platform.system() == 'Darwin':       # macOS
             subprocess.call(('open', filepath))

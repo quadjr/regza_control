@@ -62,7 +62,7 @@
             let url = new URL(window.location.href);
             let params = url.searchParams;
             const dummyframe =  document.getElementById('dummyframe');
-            dummyframe.src = 'http://' + params.get('id') + ':' + params.get('pass') + '@' + params.get('ip') + '/remote/remote.htm?key=' + key_value;
+            dummyframe.src = 'http://' + params.get('id') + ':' + atob(params.get('pass')) + '@' + params.get('ip') + '/remote/remote.htm?key=' + key_value;
         };
     </script>
 </body>
