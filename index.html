@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>REGZA</title>
+    <style type="text/css">
+        .button{
+            border:1px #999 solid;
+            background-color:#333;
+            color:#CCC;
+            width:60px;
+            height:30px;
+            line-height:30px;
+            margin:8px 5px;
+            display:inline-block;
+            text-align:center;
+            font-size:13px;
+            cursor:pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+    <div class="button" style="border:1px #999 solid;width:240px;height:390px;padding:20px 2px 20px;">
+        <div onclick="remote_send('40BF0F');" class="button">入力切替</div>
+        <div class="button" style="border-color:#333;">&nbsp;</div>
+        <div onclick="remote_send('40BF12');" class="button" style="border-color:red;">電源</div>
+        <br>
+        <div onclick="remote_send('40BF01');" class="button">1</div>
+        <div onclick="remote_send('40BF02');" class="button">2</div>
+        <div onclick="remote_send('40BF03');" class="button">3</div>
+        <br>
+        <div onclick="remote_send('40BF04');" class="button">4</div>
+        <div onclick="remote_send('40BF05');" class="button">5</div>
+        <div onclick="remote_send('40BF06');" class="button">6</div>
+        <br>
+        <div onclick="remote_send('40BF07');" class="button">7</div>
+        <div onclick="remote_send('40BF08');" class="button">8</div>
+        <div onclick="remote_send('40BF09');" class="button">9</div>
+        <br>
+        <div onclick="remote_send('40BF0A');" class="button">10</div>
+        <div onclick="remote_send('40BF0B');" class="button">11</div>
+        <div onclick="remote_send('40BF0C');" class="button">12</div>
+        <br>
+        <div onclick="remote_send('40BF1B');" class="button">CH↑</div>
+        <div onclick="remote_send('40BF10');" class="button">消音</div>
+        <div onclick="remote_send('40BF1A');" class="button">Vol↑</div>
+        <br>
+        <div class="button" style="border-color:#333;">&nbsp;</div>
+        <div onclick="remote_send('40BF1C');" class="button">画面表示</div>
+        <div class="button" style="border-color:#333;">&nbsp;</div>
+        <br>
+        <div onclick="remote_send('40BF1F');" class="button">CH↓</div>
+        <div onclick="remote_send('40BF13');" class="button">音声切替</div>
+        <div onclick="remote_send('40BF1E');" class="button">Vol↓</div>
+        <br>
+    </div>
+
+    <script type="text/javascript">
+        function remote_send(key_value){
+            let url = new URL(window.location.href);
+            let params = url.searchParams;
+            const dummyframe =  document.getElementById('dummyframe');
+            dummyframe.src = 'http://' + params.get('id') + ':' + params.get('pass') + '@' + params.get('ip') + '/remote/remote.htm?key=' + key_value;
+        };
+    </script>
+</body>
+</html>
